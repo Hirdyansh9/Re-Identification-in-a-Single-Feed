@@ -6,8 +6,8 @@ This report details the methodology, techniques, and challenges of the first app
 
 ## 1. Approach and Methodology
 
-The first approach implements a complete, foundational pipeline for detecting, tracking, and re-identifying players in a video. The core methodology is sequential:
-1.  **Detect**: A pre-trained YOLOv8 model processes each frame to detect all relevant personnel (players, goalkeepers, referees).
+The first approach implements a general pipeline for detecting, tracking and re-identifying players in a video. The core methodology is as follows:
+1.  **Detect**:  A pre-trained YOLOv11 model processes each frame to detect the classes (ball, players, goalkeepers, and referees).
 2.  **Track**: The resulting detections are passed to the **ByteTrack** algorithm, which assigns a temporary `tracker_id` and follows each person from frame to frame.
 3.  **Re-identify**: A custom re-identification system is built on top of the tracker. When a tracked person is lost and a new one appears, the system attempts to match them based on visual similarity to maintain a persistent ID.
 
@@ -17,7 +17,7 @@ The first approach implements a complete, foundational pipeline for detecting, t
 
 ### Core Components:
 
-* **Object Detection**: A custom-trained **YOLOv11 model** is used for initial detection. The model is capable of identifying the `ball`, `goalkeeper`, `player`, and `referee` classes.
+* **Object Detection**: A pre-trained **YOLOv11 model** is used for initial detection and is capable of detecting the `ball`, `goalkeeper`, `player`, and `referee` classes.
 * **Tracking**: The `supervision.ByteTrack` library is used for its efficiency and robustness in handling short-term occlusions.
 * **Re-Identification**: This is the key custom component and involves several steps:
     * **Appearance Feature**: An **HSV (Hue, Saturation, Value) Color Histogram** is calculated for the entire bounding box of each detected player. This histogram serves as the primary feature vector for representing a player's appearance.
