@@ -27,9 +27,9 @@ The first approach implements a general pipeline for detecting, tracking and re-
 
 ### Outcomes:
 
-* The system somewhat tracks players and re-assigns their IDs when they reappear in the frame.
+* The system tracks players and somewhat re-assigns their IDs when they reappear in the frame.
 * The final processed video demonstrates the functionality of the pipeline.
-* Performance was measured at **~15.4 FPS**, which is suitable for near real-time analysis.
+* Performance was measured at **~15.4 FPS**.
 
 ---
 
@@ -44,5 +44,5 @@ The first approach implements a general pipeline for detecting, tracking and re-
 
 This approach provides a proof-of-concept but is not fully robust. With more time and resources, the following improvements could be made:
 * **Advanced Appearance Features**: Move beyond color histograms to more powerful deep learning-based appearance embeddings. A model like a Siamese network could be trained to produce feature vectors that are more resilient to changes in lighting, pose, and color similarity.
-* **Multi-Cue Tracking**: Incorporate motion-based features (e.g., Kalman filters) and position information into the matching cost matrix alongside appearance similarity. This would improve re-identification accuracy, especially for players who are momentarily occluded.
-* **More Sophisticated ID Management**: Implement a stateful system that tracks assigned IDs in distinct pools to enforce the desired 1-22 numbering scheme for players and goalkeepers.
+* **Multi-Cue Tracking**: Incorporate motion-based features and position information into the matching cost matrix alongside appearance similarity. This would improve re-identification accuracy, especially for players who are momentarily occluded.
+* **More Sophisticated ID Management**: Implement a stateful system that tracks assigned IDs in distinct pools to enforce the desired numbering scheme for players and goalkeepers.
