@@ -1,6 +1,7 @@
 # Detailed Report: Approach 2 - Advanced Classification & ID Management
 
 This report details the methodology of the second, more advanced and robust approach, which was developed to address the limitations of the first.
+
 ---
 
 ## 1. Approach and Methodology
@@ -21,8 +22,8 @@ This approach improves on the foundational pipeline by introducing a more intell
 * **Automatic Color Profile Identification**: The script first processes the initial 100 frames to automatically determine the primary colors of all entities.
     * It uses **K-Means clustering** on the colors of detected `player` objects to find the two dominant team colors.
     * It calculates the average color of all detected `goalkeeper` and `referee` objects to create their respective color profiles.
-* **Shoulder-to-Knee ROI for Classification**: Out of multiple body proportions, shoulder-to-knee worked the best to segment players into teams. To improve the accuracy of the color profiles, a specific Region of Interest (ROI) covering the player's torso and shorts (from ~15% to 85% of the bounding box height) is used. This minimizes interference from the pitch, skin color, or players' boots.
-* **Guaranteed Unique ID Management**: This is a key improvement over Approach 1.
+* **Shoulder-to-Knee ROI for Classification**: Out of multiple body proportions, shoulder-to-knee worked the best to segment players into teams. To improve the accuracy of the color profiles, a specific Region of Interest (ROI) covering the player's torso and shorts (from ~15% to 85% of the bounding box height) is used. This minimizes interference from the pitch.
+* **Unique ID Management**: This is a key improvement over Approach 1.
     * The system uses central sets (`assigned_team1_ids`, `assigned_team2_ids`) to maintain a persistent record of all IDs ever assigned.
     * A dedicated function, `assign_new_player_id`, finds the first available ID within the correct numerical range (1-10 for Team 1, 11 for GK1, etc.), ensuring no duplicates are ever created.
 * **Full-Body Re-Identification**: While classification relies on the kit color, the re-identification of lost players uses an HSV histogram of the **entire bounding box**. This provides a richer feature set for matching players who reappear in the frame.
