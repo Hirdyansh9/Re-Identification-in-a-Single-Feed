@@ -27,5 +27,5 @@ This report provides a summary and comparison of two of my approaches for the pl
 
 ## Conclusion
 
-While both approaches successfully fulfill the primary objective of Re-Identification-in-a-Single-Feed, **Approach 2** demonstrates a more sophisticated methodology. It leverages techniques such as automatic color profile identification and stateful, unique ID management, which represent a significant improvement over the foundational methods used in Approach 1. 
-The challenges encountered during its development are mainly the misclassifications, highlighting the necessity of moving beyond simple feature matching to more intelligent for complex real-world scenarios.
+While both approaches successfully fulfill the primary objective of Re-Identification-in-a-Single-Feed, **Approach 2** demonstrates a more sophisticated methodology. It leverages techniques such as automatic color profile identification and stateful, unique ID management, which represent a significant improvement over the foundational methods used in Approach 1.
+The challenges encountered during its development were mainly the misclassifications, highlighting the necessity of moving beyond simple feature matching to more intelligent approaches for complex real-world scenarios.
