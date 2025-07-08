@@ -26,7 +26,7 @@ This approach improves on the foundational pipeline by introducing a more intell
 * **Unique ID Management**: This is a key improvement over Approach 1.
     * The system uses central sets (`assigned_team1_ids`, `assigned_team2_ids`) to maintain a persistent record of all IDs ever assigned.
     * A dedicated function, `assign_new_player_id`, finds the first available ID within the correct numerical range (1-10 for Team 1, 11 for GK1, etc.), ensuring no duplicates are ever created.
-* **Full-Body Re-Identification**: While classification relies on the kit color, the re-identification of lost players uses an HSV histogram of the **entire bounding box**. This provides a richer feature set for matching players who reappear in the frame.
+* **Full-Body Re-Identification**: While classification relies on the kit color, the re-identification of lost players uses an HSV histogram of the **entire bounding box**. Hungarian algorithm (scipy.optimize.linear_sum_assignment) is used to find the most likely one-to-one matches between the set of newly appeared players and the set of recently lost players. This provides a richer feature set for matching players who reappear in the frame.
 
 ### Outcomes:
 
